@@ -10,3 +10,20 @@ function getComputerChoice() {
         return "Scissors";
     }
 }
+
+function getPlayerChoice (Inputchoice) {
+    let choice = Inputchoice.toLowerCase();
+    if (choice == "rock") {
+        return "Rock";
+    }
+    else if (choice == "paper") {
+        return "Paper";
+    }
+    else if (choice == "scissors") {
+        return "Scissors";
+    }
+    else {
+        alert("Error! Please enter rock paper or scissors.");
+    }
+}
+
