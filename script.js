@@ -49,3 +49,5 @@ function oneRound (playerChoice, computerChoice) {
         alert("ERROR ON ROUND FUNCTION.")
     }
 }
+
+oneRound(getPlayerChoice(prompt("Rock, paper or scissors?")), getComputerChoice());
