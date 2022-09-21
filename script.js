@@ -8,6 +8,7 @@ function getComputerChoice() {
     }
     else if (randomNumber == 2) {
         return "Scissors";
+   
     }
 }
 
@@ -37,14 +38,14 @@ function oneRound (playerChoice, computerChoice) {
         alert("It's a tie! You both chose " + playerChoice + ".");
     }
     else if (playerChoice == "Rock" && computerChoice == "Scissors" || playerChoice == "Paper" && computerChoice == "Rock" || playerChoice == "Scissors" && computerChoice == "Paper") { // Player wins.
-        alert("You win! " + playerChoice + " beats " + computerChoice + ".");
+        alert("You win! " + playerChoice + " (YOU) " + " beats " + computerChoice + " (COMPUTER).");
         return "playerWin";
     }
     else if (playerChoice == "Rock" && computerChoice == "Paper" || playerChoice == "Paper" && computerChoice == "Scissors" || playerChoice == "Scissors" && computerChoice == "Rock") { // Player loses.
-        alert("You lose! " + computerChoice + " beats " + playerChoice + ".");
+        alert("You lose! " + computerChoice + " (COMPUTER) " + " beats " + playerChoice + " (YOU).");
         return "computerWin";
     }
     else {
-        console.log("ERROR on ROUND");
+        alert("ERROR ON ROUND FUNCTION.")
     }
 }
