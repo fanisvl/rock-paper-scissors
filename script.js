@@ -11,8 +11,12 @@ function getComputerChoice() {
     }
 }
 
-function getPlayerChoice (Inputchoice) {
-    let choice = Inputchoice.toLowerCase();
+function playerChoiceRestart() {
+    getPlayerChoice(prompt("Rock paper or scissors?"));
+}
+
+function getPlayerChoice (inputChoice) {
+    let choice = inputChoice.toLowerCase();
     if (choice == "rock") {
         return "Rock";
     }
@@ -23,7 +27,8 @@ function getPlayerChoice (Inputchoice) {
         return "Scissors";
     }
     else {
-        alert("Error! Please enter rock paper or scissors.");
+        alert("Error! Please enter rock paper or scissors.")
+        playerChoiceRestart();
     }
 }
 
