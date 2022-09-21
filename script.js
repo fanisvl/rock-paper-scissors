@@ -32,3 +32,19 @@ function getPlayerChoice (inputChoice) {
     }
 }
 
+function oneRound (playerChoice, computerChoice) {
+    if (playerChoice == computerChoice) {
+        alert("It's a tie! You both chose " + playerChoice + ".");
+    }
+    else if (playerChoice == "Rock" && computerChoice == "Scissors" || playerChoice == "Paper" && computerChoice == "Rock" || playerChoice == "Scissors" && computerChoice == "Paper") { // Player wins.
+        alert("You win! " + playerChoice + " beats " + computerChoice + ".");
+        return "playerWin";
+    }
+    else if (playerChoice == "Rock" && computerChoice == "Paper" || playerChoice == "Paper" && computerChoice == "Scissors" || playerChoice == "Scissors" && computerChoice == "Rock") { // Player loses.
+        alert("You lose! " + computerChoice + " beats " + playerChoice + ".");
+        return "computerWin";
+    }
+    else {
+        console.log("ERROR on ROUND");
+    }
+}
