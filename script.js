@@ -36,6 +36,7 @@ function getPlayerChoice (inputChoice) {
 function oneRound (playerChoice, computerChoice) {
     if (playerChoice == computerChoice) {
         alert("It's a tie! You both chose " + playerChoice + ".");
+        return "tie";
     }
     else if (playerChoice == "Rock" && computerChoice == "Scissors" || playerChoice == "Paper" && computerChoice == "Rock" || playerChoice == "Scissors" && computerChoice == "Paper") { // Player wins.
         alert("You win! " + playerChoice + " (YOU) " + " beats " + computerChoice + " (COMPUTER).");
