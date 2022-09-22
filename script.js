@@ -7,16 +7,12 @@ function getComputerChoice() {
         return "Paper";
     }
     else if (randomNumber == 2) {
-        return "Scissors";
-   
+        return "Scissors";   
     }
 }
 
-function playerChoiceRestart() {
-    getPlayerChoice(prompt("Rock paper or scissors?"));
-}
-
-function getPlayerChoice (inputChoice) {
+function getPlayerChoice () {
+    let inputChoice = prompt("Rock paper or scissors?");
     let choice = inputChoice.toLowerCase();
     if (choice == "rock") {
         return "Rock";
@@ -29,11 +25,11 @@ function getPlayerChoice (inputChoice) {
     }
     else {
         alert("Error! Please enter rock paper or scissors.")
-        playerChoiceRestart();
+        return getPlayerChoice(); // Solution to Error (1)
     }
 }
 
-function oneRound (playerChoice, computerChoice) {
+function oneRound (playerChoice, computerChoice) { 
     if (playerChoice == computerChoice) {
         alert("It's a tie! You both chose " + playerChoice + ".");
         return "tie";
@@ -46,9 +42,6 @@ function oneRound (playerChoice, computerChoice) {
         alert("You lose! " + computerChoice + " (COMPUTER) " + " beats " + playerChoice + " (YOU).");
         return "computerWin";
     }
-    else {
-        alert("ERROR ON ROUND FUNCTION.")
-    }
-}
+}   
 
-oneRound(getPlayerChoice(prompt("Rock, paper or scissors?")), getComputerChoice());
+oneRound(getPlayerChoice(), getComputerChoice());
