@@ -42,6 +42,41 @@ function oneRound (playerChoice, computerChoice) {
         alert("You lose! " + computerChoice + " (COMPUTER) " + " beats " + playerChoice + " (YOU).");
         return "computerWin";
     }
+    else {
+        console.log("ERROR on oneRound");
+    }
 }   
 
-oneRound(getPlayerChoice(), getComputerChoice());
+function game() {
+    let playerPoints = 0;
+    let computerPoints = 0;
+    while (playerPoints < 3 && computerPoints < 3) {
+        let result = oneRound(getPlayerChoice(), getComputerChoice());
+         if (result == "playerWin") {
+            playerPoints++;
+            console.log(playerPoints + " PLAYER " + computerPoints + " COMPUTER");
+         }
+         else if (result == "computerWin") {
+            computerPoints++;
+            console.log(playerPoints + " PLAYER " + computerPoints + " COMPUTER");
+         }
+         else if (result == "tie") {
+            console.log(playerPoints + " PLAYER " + computerPoints + " COMPUTER");
+         }
+         else {
+            console.log("ERROR ON WHILE");
+         }
+    }
+
+    if (playerPoints > computerPoints) {
+        alert("Game Over! You WON! " + playerPoints + " (YOU) - " + computerPoints + " (COMPUTER)" );
+    }
+    else if (playerPoints < computerPoints) {
+        alert("Game Over! You LOST! " + playerPoints + " (YOU) - " + computerPoints + " (COMPUTER)");
+    }
+    else {
+        console.log("ERROR ON GAME OVER");
+    }
+}
+
+game();
