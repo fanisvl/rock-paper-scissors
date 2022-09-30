@@ -30,7 +30,6 @@ function getPlayerChoice () {
 }
 
 function oneRound (playerChoice, computerChoice) { 
-    let resultDiv = document.querySelector('#result');
     if (playerPoints < 3 && computerPoints < 3) {
         if (playerChoice == computerChoice) {
             resultDiv.textContent = "It's a tie! You both chose " + playerChoice + ".";
@@ -49,18 +48,11 @@ function oneRound (playerChoice, computerChoice) {
         }
     }
     else {
-        resultDiv.textContent = "";
+        resultDiv.textContent = "Play Again!";
     }
 }   
 
-let playerPoints = 0;
-let computerPoints = 0;  
-let result;
-
 function game() {
-    let rockBtn = document.querySelector('#rock');
-    let paperBtn = document.querySelector('#paper');
-    let scissorsBtn = document.querySelector('#scissors');
         rockBtn.addEventListener('click', () => {
             result = oneRound("Rock", getComputerChoice())
             checkScore();
@@ -77,7 +69,6 @@ function game() {
 
 
 function checkScore() {
-    let scoreDiv = document.querySelector('#score');
     if (playerPoints < 3 && computerPoints < 3) {
         if (result == "playerWin") {
            playerPoints++;
@@ -93,10 +84,38 @@ function checkScore() {
    }
     if (playerPoints == 3) {
         scoreDiv.textContent = "Game Over! You WON! " + playerPoints + " (YOU) - " + computerPoints + " (COMPUTER)";
+        container.appendChild(resetBtn);
+        resetBtn.textContent = "Play again!"
+        playerPoints = 0;
+        computerPoints = 0;
+        resetBtn.addEventListener('click', reset);
+
         }
     else if (computerPoints == 3) {
         scoreDiv.textContent = "Game Over! You LOST! " + playerPoints + " (YOU) - " + computerPoints + " (COMPUTER)";
+        container.appendChild(resetBtn);
+        resetBtn.textContent = "Play again!"
+        resetBtn.addEventListener('click', reset);
     }
 }
+
+function reset() {
+    playerPoints = 0;
+    computerPoints = 0;
+    scoreDiv.textContent = playerPoints + " PLAYER " + computerPoints + " COMPUTER";
+    resultDiv.textContent = "Rock Paper Scissors";
+    container.removeChild(resetBtn);
+}
+
+let playerPoints = 0;
+let computerPoints = 0;  
+let result;
+let container = document.querySelector('#container');
+let resultDiv = document.querySelector('#result');
+let scoreDiv = document.querySelector('#score');
+let rockBtn = document.querySelector('#rock');
+let paperBtn = document.querySelector('#paper');
+let scissorsBtn = document.querySelector('#scissors');
+let resetBtn = document.createElement('button');
 
 game();
