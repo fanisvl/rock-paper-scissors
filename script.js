@@ -76,7 +76,7 @@ function checkScore() {
         }
         else if (result == "computerWin") {
            computerPoints++;
-           scoreDiv.textContent = playerPoints + " PLAYER " + computerPoints + " COMPUTER";
+           scoreDiv.textContent = playerPoints + " PLAYER " +  computerPoints + " COMPUTER";
         }
         else if (result == "tie") {
             scoreDiv.textContent = playerPoints + " PLAYER " + computerPoints + " COMPUTER";
@@ -86,8 +86,6 @@ function checkScore() {
         scoreDiv.textContent = "Game Over! You WON! " + playerPoints + " (YOU) - " + computerPoints + " (COMPUTER)";
         container.appendChild(resetBtn);
         resetBtn.textContent = "Play again!"
-        playerPoints = 0;
-        computerPoints = 0;
         resetBtn.addEventListener('click', reset);
 
         }
@@ -117,5 +115,6 @@ let rockBtn = document.querySelector('#rock');
 let paperBtn = document.querySelector('#paper');
 let scissorsBtn = document.querySelector('#scissors');
 let resetBtn = document.createElement('button');
+resetBtn.classList.add('button');
 
 game();
