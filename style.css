@@ -61,6 +61,11 @@ body {
     opacity: 50%;
   }
 
-  .game-over {
+  .game-over-win {
     font-size: 45px;
+    color: rgb(0, 188, 182);
+  }
+  .game-over-loss {
+    font-size: 45px;
+    color: rgb(255, 82, 82);
   }

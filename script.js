@@ -36,15 +36,12 @@ function oneRound (playerChoice, computerChoice) {
             return "tie";
         }
         else if (playerChoice == "Rock" && computerChoice == "Scissors" || playerChoice == "Paper" && computerChoice == "Rock" || playerChoice == "Scissors" && computerChoice == "Paper") { // Player wins.
-            resultDiv.textContent = "You win! " + playerChoice + " (YOU) " + " beats " + computerChoice + " (COMPUTER).";
+            resultDiv.textContent = "You win! " + playerChoice + " (YOU) " + " beats " + computerChoice + " (Computer).";
             return "playerWin";
         }
         else if (playerChoice == "Rock" && computerChoice == "Paper" || playerChoice == "Paper" && computerChoice == "Scissors" || playerChoice == "Scissors" && computerChoice == "Rock") { // Player loses.
-            resultDiv.textContent = "You lose! " + computerChoice + " (COMPUTER) " + " beats " + playerChoice + " (YOU).";
+            resultDiv.textContent = "You lose! " + computerChoice + " (Computer) " + " beats " + playerChoice + " (YOU).";
             return "computerWin";
-        }
-        else {
-            console.log("ERROR on oneRound");
         }
     }
     else {
@@ -85,6 +82,7 @@ function checkScore() {
     if (playerPoints == 3) {
         scoreDiv.textContent = "You WON! " + playerPoints + " (YOU) - " + computerPoints;
         container.insertBefore(gameOver, scoreDiv);
+        gameOver.classList.add('game-over-win');
         container.appendChild(resetBtn);
         resetBtn.textContent = "Play again!"
         resetBtn.addEventListener('click', reset);
@@ -93,6 +91,7 @@ function checkScore() {
     else if (computerPoints == 3) {
         scoreDiv.textContent = "You LOST! " + playerPoints + " (YOU) - " + computerPoints;
         container.insertBefore(gameOver, scoreDiv);
+        gameOver.classList.add('game-over-loss');
         container.appendChild(resetBtn);
         resetBtn.textContent = "Play again!"
         resetBtn.addEventListener('click', reset);
@@ -121,6 +120,5 @@ let resetBtn = document.createElement('button');
 resetBtn.classList.add('reset-button');
 let gameOver = document.createElement('div');
 gameOver.textContent = "Game Over!"
-gameOver.classList.add('game-over');
 
 game();
