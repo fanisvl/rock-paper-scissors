@@ -72,14 +72,14 @@ function checkScore() {
     if (playerPoints < 3 && computerPoints < 3) {
         if (result == "playerWin") {
            playerPoints++;
-           scoreDiv.textContent = playerPoints + " PLAYER " + computerPoints + " COMPUTER";
+           scoreDiv.textContent = playerPoints + " (You) -  " + computerPoints + " (Computer)";
         }
         else if (result == "computerWin") {
            computerPoints++;
-           scoreDiv.textContent = playerPoints + " PLAYER " +  computerPoints + " COMPUTER";
+           scoreDiv.textContent = playerPoints + " (You) -  " + computerPoints + " (Computer)";
         }
         else if (result == "tie") {
-            scoreDiv.textContent = playerPoints + " PLAYER " + computerPoints + " COMPUTER";
+            scoreDiv.textContent = playerPoints + " (You) -  " + computerPoints + " (Computer)";
         }
    }
     if (playerPoints == 3) {
@@ -100,7 +100,7 @@ function checkScore() {
 function reset() {
     playerPoints = 0;
     computerPoints = 0;
-    scoreDiv.textContent = playerPoints + " PLAYER " + computerPoints + " COMPUTER";
+    scoreDiv.textContent = playerPoints + " (You) -  " + computerPoints + " (Computer)";
     resultDiv.textContent = "Rock Paper Scissors";
     container.removeChild(resetBtn);
 }
@@ -115,6 +115,6 @@ let rockBtn = document.querySelector('#rock');
 let paperBtn = document.querySelector('#paper');
 let scissorsBtn = document.querySelector('#scissors');
 let resetBtn = document.createElement('button');
-resetBtn.classList.add('button');
+resetBtn.classList.add('reset-button');
 
 game();
