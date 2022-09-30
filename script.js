@@ -50,3 +50,9 @@ function oneRound (playerChoice, computerChoice) {
 let rockBtn = document.querySelector('#rock');
 let paperBtn = document.querySelector('#paper');
 let scissorsBtn = document.querySelector('#scissors');
+
+rockBtn.addEventListener('click', () => oneRound("Rock", getComputerChoice()));
+
+paperBtn.addEventListener('click', () => oneRound("Paper", getComputerChoice()));
+
+scissorsBtn.addEventListener('click', () => oneRound("Scissors", getComputerChoice()));
