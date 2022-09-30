@@ -30,6 +30,7 @@ function getPlayerChoice () {
 }
 
 function oneRound (playerChoice, computerChoice) { 
+    let resultDiv = document.querySelector('#result');
     if (playerChoice == computerChoice) {
         resultDiv.textContent = "It's a tie! You both chose " + playerChoice + ".";
         return "tie";
@@ -52,6 +53,9 @@ let computerPoints = 0;
 let result;
 
 function game() {
+    let rockBtn = document.querySelector('#rock');
+    let paperBtn = document.querySelector('#paper');
+    let scissorsBtn = document.querySelector('#scissors');
         rockBtn.addEventListener('click', () => {
             result = oneRound("Rock", getComputerChoice())
             checkScore();
@@ -68,17 +72,21 @@ function game() {
 
 
 function checkScore() {
+    let scoreDiv = document.querySelector('#score');
     if (playerPoints < 3 && computerPoints < 3) {
         if (result == "playerWin") {
            playerPoints++;
            console.log(playerPoints + " PLAYER " + computerPoints + " COMPUTER"); // score
+           scoreDiv.textContent = playerPoints + " PLAYER " + computerPoints + " COMPUTER";
         }
         else if (result == "computerWin") {
            computerPoints++;
            console.log(playerPoints + " PLAYER " + computerPoints + " COMPUTER"); // score
+           scoreDiv.textContent = playerPoints + " PLAYER " + computerPoints + " COMPUTER";
         }
         else if (result == "tie") {
             console.log(playerPoints + " PLAYER " + computerPoints + " COMPUTER"); // score
+            scoreDiv.textContent = playerPoints + " PLAYER " + computerPoints + " COMPUTER";
         }
    }
     if (playerPoints == 3) {
@@ -88,10 +96,5 @@ function checkScore() {
         alert("Game Over! You LOST! " + playerPoints + " (YOU) - " + computerPoints + " (COMPUTER)");
     }
 }
-
-let rockBtn = document.querySelector('#rock');
-let paperBtn = document.querySelector('#paper');
-let scissorsBtn = document.querySelector('#scissors');
-let resultDiv = document.querySelector('#result');
 
 game();
