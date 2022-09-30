@@ -31,15 +31,15 @@ function getPlayerChoice () {
 
 function oneRound (playerChoice, computerChoice) { 
     if (playerChoice == computerChoice) {
-        alert("It's a tie! You both chose " + playerChoice + ".");
+        resultDiv.textContent = "It's a tie! You both chose " + playerChoice + ".";
         return "tie";
     }
     else if (playerChoice == "Rock" && computerChoice == "Scissors" || playerChoice == "Paper" && computerChoice == "Rock" || playerChoice == "Scissors" && computerChoice == "Paper") { // Player wins.
-        alert("You win! " + playerChoice + " (YOU) " + " beats " + computerChoice + " (COMPUTER).");
+        resultDiv.textContent = "You win! " + playerChoice + " (YOU) " + " beats " + computerChoice + " (COMPUTER).";
         return "playerWin";
     }
     else if (playerChoice == "Rock" && computerChoice == "Paper" || playerChoice == "Paper" && computerChoice == "Scissors" || playerChoice == "Scissors" && computerChoice == "Rock") { // Player loses.
-        alert("You lose! " + computerChoice + " (COMPUTER) " + " beats " + playerChoice + " (YOU).");
+        resultDiv.textContent = "You lose! " + computerChoice + " (COMPUTER) " + " beats " + playerChoice + " (YOU).";
         return "computerWin";
     }
     else {
@@ -50,6 +50,7 @@ function oneRound (playerChoice, computerChoice) {
 let rockBtn = document.querySelector('#rock');
 let paperBtn = document.querySelector('#paper');
 let scissorsBtn = document.querySelector('#scissors');
+let resultDiv = document.querySelector('#result');
 
 rockBtn.addEventListener('click', () => oneRound("Rock", getComputerChoice()));
 
