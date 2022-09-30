@@ -72,25 +72,27 @@ function checkScore() {
     if (playerPoints < 3 && computerPoints < 3) {
         if (result == "playerWin") {
            playerPoints++;
-           scoreDiv.textContent = playerPoints + " (You) -  " + computerPoints + " (Computer)";
+           scoreDiv.textContent = playerPoints + " (You) -  " + computerPoints;
         }
         else if (result == "computerWin") {
            computerPoints++;
-           scoreDiv.textContent = playerPoints + " (You) -  " + computerPoints + " (Computer)";
+           scoreDiv.textContent = playerPoints + " (You) -  " + computerPoints;
         }
         else if (result == "tie") {
-            scoreDiv.textContent = playerPoints + " (You) -  " + computerPoints + " (Computer)";
+            scoreDiv.textContent = playerPoints + " (You) -  " + computerPoints;
         }
    }
     if (playerPoints == 3) {
-        scoreDiv.textContent = "Game Over! You WON! " + playerPoints + " (YOU) - " + computerPoints + " (COMPUTER)";
+        scoreDiv.textContent = "You WON! " + playerPoints + " (YOU) - " + computerPoints;
+        container.insertBefore(gameOver, scoreDiv);
         container.appendChild(resetBtn);
         resetBtn.textContent = "Play again!"
         resetBtn.addEventListener('click', reset);
 
         }
     else if (computerPoints == 3) {
-        scoreDiv.textContent = "Game Over! You LOST! " + playerPoints + " (YOU) - " + computerPoints + " (COMPUTER)";
+        scoreDiv.textContent = "You LOST! " + playerPoints + " (YOU) - " + computerPoints;
+        container.insertBefore(gameOver, scoreDiv);
         container.appendChild(resetBtn);
         resetBtn.textContent = "Play again!"
         resetBtn.addEventListener('click', reset);
@@ -100,9 +102,10 @@ function checkScore() {
 function reset() {
     playerPoints = 0;
     computerPoints = 0;
-    scoreDiv.textContent = playerPoints + " (You) -  " + computerPoints + " (Computer)";
+    scoreDiv.textContent = playerPoints + " (You) -  " + computerPoints;
     resultDiv.textContent = "Rock Paper Scissors";
     container.removeChild(resetBtn);
+    container.removeChild(gameOver);
 }
 
 let playerPoints = 0;
@@ -116,5 +119,8 @@ let paperBtn = document.querySelector('#paper');
 let scissorsBtn = document.querySelector('#scissors');
 let resetBtn = document.createElement('button');
 resetBtn.classList.add('reset-button');
+let gameOver = document.createElement('div');
+gameOver.textContent = "Game Over!"
+gameOver.classList.add('game-over');
 
 game();

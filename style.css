@@ -60,3 +60,7 @@ body {
   .img:hover {
     opacity: 50%;
   }
+
+  .game-over {
+    font-size: 45px;
+  }
