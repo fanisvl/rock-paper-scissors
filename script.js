@@ -31,20 +31,25 @@ function getPlayerChoice () {
 
 function oneRound (playerChoice, computerChoice) { 
     let resultDiv = document.querySelector('#result');
-    if (playerChoice == computerChoice) {
-        resultDiv.textContent = "It's a tie! You both chose " + playerChoice + ".";
-        return "tie";
-    }
-    else if (playerChoice == "Rock" && computerChoice == "Scissors" || playerChoice == "Paper" && computerChoice == "Rock" || playerChoice == "Scissors" && computerChoice == "Paper") { // Player wins.
-        resultDiv.textContent = "You win! " + playerChoice + " (YOU) " + " beats " + computerChoice + " (COMPUTER).";
-        return "playerWin";
-    }
-    else if (playerChoice == "Rock" && computerChoice == "Paper" || playerChoice == "Paper" && computerChoice == "Scissors" || playerChoice == "Scissors" && computerChoice == "Rock") { // Player loses.
-        resultDiv.textContent = "You lose! " + computerChoice + " (COMPUTER) " + " beats " + playerChoice + " (YOU).";
-        return "computerWin";
+    if (playerPoints < 3 && computerPoints < 3) {
+        if (playerChoice == computerChoice) {
+            resultDiv.textContent = "It's a tie! You both chose " + playerChoice + ".";
+            return "tie";
+        }
+        else if (playerChoice == "Rock" && computerChoice == "Scissors" || playerChoice == "Paper" && computerChoice == "Rock" || playerChoice == "Scissors" && computerChoice == "Paper") { // Player wins.
+            resultDiv.textContent = "You win! " + playerChoice + " (YOU) " + " beats " + computerChoice + " (COMPUTER).";
+            return "playerWin";
+        }
+        else if (playerChoice == "Rock" && computerChoice == "Paper" || playerChoice == "Paper" && computerChoice == "Scissors" || playerChoice == "Scissors" && computerChoice == "Rock") { // Player loses.
+            resultDiv.textContent = "You lose! " + computerChoice + " (COMPUTER) " + " beats " + playerChoice + " (YOU).";
+            return "computerWin";
+        }
+        else {
+            console.log("ERROR on oneRound");
+        }
     }
     else {
-        console.log("ERROR on oneRound");
+        resultDiv.textContent = "";
     }
 }   
 
@@ -76,24 +81,21 @@ function checkScore() {
     if (playerPoints < 3 && computerPoints < 3) {
         if (result == "playerWin") {
            playerPoints++;
-           console.log(playerPoints + " PLAYER " + computerPoints + " COMPUTER"); // score
            scoreDiv.textContent = playerPoints + " PLAYER " + computerPoints + " COMPUTER";
         }
         else if (result == "computerWin") {
            computerPoints++;
-           console.log(playerPoints + " PLAYER " + computerPoints + " COMPUTER"); // score
            scoreDiv.textContent = playerPoints + " PLAYER " + computerPoints + " COMPUTER";
         }
         else if (result == "tie") {
-            console.log(playerPoints + " PLAYER " + computerPoints + " COMPUTER"); // score
             scoreDiv.textContent = playerPoints + " PLAYER " + computerPoints + " COMPUTER";
         }
    }
     if (playerPoints == 3) {
-        alert("Game Over! You WON! " + playerPoints + " (YOU) - " + computerPoints + " (COMPUTER)" );
+        scoreDiv.textContent = "Game Over! You WON! " + playerPoints + " (YOU) - " + computerPoints + " (COMPUTER)";
         }
-        else if (computerPoints == 3) {
-        alert("Game Over! You LOST! " + playerPoints + " (YOU) - " + computerPoints + " (COMPUTER)");
+    else if (computerPoints == 3) {
+        scoreDiv.textContent = "Game Over! You LOST! " + playerPoints + " (YOU) - " + computerPoints + " (COMPUTER)";
     }
 }
 
