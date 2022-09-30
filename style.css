@@ -1,0 +1,71 @@
+body {
+    background-color: black;
+}
+
+#result {
+    font-size: 25px;
+    padding: 25px;
+}
+
+#score {
+    font-size: 45px;
+}
+
+#container {
+    color: white;
+    display : flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30vh;
+}
+
+#button-container {
+    display: flex;
+    gap: 50px;
+    padding: 15px;
+}
+
+
+.button {
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    border: 0px;
+}
+
+.reset-button {
+    border-radius: 25px;
+    border: 0px;
+    background-color: white;
+    width: 150px;
+    height: 45px;
+}
+
+.reset-button:hover {
+    opacity: 80%;
+}
+
+
+.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .img {
+    height: 75px;
+    width: 75px;
+  }
+
+  .img:hover {
+    opacity: 50%;
+  }
+
+  .game-over-win {
+    font-size: 45px;
+    color: rgb(0, 188, 182);
+  }
+  .game-over-loss {
+    font-size: 45px;
+    color: rgb(255, 82, 82);
+  }

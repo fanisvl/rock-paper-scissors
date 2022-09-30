@@ -30,53 +30,95 @@ function getPlayerChoice () {
 }
 
 function oneRound (playerChoice, computerChoice) { 
-    if (playerChoice == computerChoice) {
-        alert("It's a tie! You both chose " + playerChoice + ".");
-        return "tie";
-    }
-    else if (playerChoice == "Rock" && computerChoice == "Scissors" || playerChoice == "Paper" && computerChoice == "Rock" || playerChoice == "Scissors" && computerChoice == "Paper") { // Player wins.
-        alert("You win! " + playerChoice + " (YOU) " + " beats " + computerChoice + " (COMPUTER).");
-        return "playerWin";
-    }
-    else if (playerChoice == "Rock" && computerChoice == "Paper" || playerChoice == "Paper" && computerChoice == "Scissors" || playerChoice == "Scissors" && computerChoice == "Rock") { // Player loses.
-        alert("You lose! " + computerChoice + " (COMPUTER) " + " beats " + playerChoice + " (YOU).");
-        return "computerWin";
+    if (playerPoints < 3 && computerPoints < 3) {
+        if (playerChoice == computerChoice) {
+            resultDiv.textContent = "It's a tie! You both chose " + playerChoice + ".";
+            return "tie";
+        }
+        else if (playerChoice == "Rock" && computerChoice == "Scissors" || playerChoice == "Paper" && computerChoice == "Rock" || playerChoice == "Scissors" && computerChoice == "Paper") { // Player wins.
+            resultDiv.textContent = "You win! " + playerChoice + " (YOU) " + " beats " + computerChoice + " (Computer).";
+            return "playerWin";
+        }
+        else if (playerChoice == "Rock" && computerChoice == "Paper" || playerChoice == "Paper" && computerChoice == "Scissors" || playerChoice == "Scissors" && computerChoice == "Rock") { // Player loses.
+            resultDiv.textContent = "You lose! " + computerChoice + " (Computer) " + " beats " + playerChoice + " (YOU).";
+            return "computerWin";
+        }
     }
     else {
-        console.log("ERROR on oneRound");
+        resultDiv.textContent = "Play Again!";
     }
 }   
 
 function game() {
-    let playerPoints = 0;
-    let computerPoints = 0;
-    while (playerPoints < 3 && computerPoints < 3) {
-        let result = oneRound(getPlayerChoice(), getComputerChoice());
-         if (result == "playerWin") {
-            playerPoints++;
-            console.log(playerPoints + " PLAYER " + computerPoints + " COMPUTER");
-         }
-         else if (result == "computerWin") {
-            computerPoints++;
-            console.log(playerPoints + " PLAYER " + computerPoints + " COMPUTER");
-         }
-         else if (result == "tie") {
-            console.log(playerPoints + " PLAYER " + computerPoints + " COMPUTER");
-         }
-         else {
-            console.log("ERROR ON WHILE");
-         }
-    }
+        rockBtn.addEventListener('click', () => {
+            result = oneRound("Rock", getComputerChoice())
+            checkScore();
+        });
+        paperBtn.addEventListener('click', () => {
+            result = oneRound("Paper", getComputerChoice())
+            checkScore();
+        });
+        scissorsBtn.addEventListener('click', () => {
+            result = oneRound("Scissors", getComputerChoice())
+            checkScore();
+        });
+}
 
-    if (playerPoints > computerPoints) {
-        alert("Game Over! You WON! " + playerPoints + " (YOU) - " + computerPoints + " (COMPUTER)" );
-    }
-    else if (playerPoints < computerPoints) {
-        alert("Game Over! You LOST! " + playerPoints + " (YOU) - " + computerPoints + " (COMPUTER)");
-    }
-    else {
-        console.log("ERROR ON GAME OVER");
+
+function checkScore() {
+    if (playerPoints < 3 && computerPoints < 3) {
+        if (result == "playerWin") {
+           playerPoints++;
+           scoreDiv.textContent = playerPoints + " (You) -  " + computerPoints;
+        }
+        else if (result == "computerWin") {
+           computerPoints++;
+           scoreDiv.textContent = playerPoints + " (You) -  " + computerPoints;
+        }
+        else if (result == "tie") {
+            scoreDiv.textContent = playerPoints + " (You) -  " + computerPoints;
+        }
+   }
+    if (playerPoints == 3) {
+        scoreDiv.textContent = "You WON! " + playerPoints + " (YOU) - " + computerPoints;
+        container.insertBefore(gameOver, scoreDiv);
+        gameOver.classList.add('game-over-win');
+        container.appendChild(resetBtn);
+        resetBtn.textContent = "Play again!"
+        resetBtn.addEventListener('click', reset);
+
+        }
+    else if (computerPoints == 3) {
+        scoreDiv.textContent = "You LOST! " + playerPoints + " (YOU) - " + computerPoints;
+        container.insertBefore(gameOver, scoreDiv);
+        gameOver.classList.add('game-over-loss');
+        container.appendChild(resetBtn);
+        resetBtn.textContent = "Play again!"
+        resetBtn.addEventListener('click', reset);
     }
 }
+
+function reset() {
+    playerPoints = 0;
+    computerPoints = 0;
+    scoreDiv.textContent = playerPoints + " (You) -  " + computerPoints;
+    resultDiv.textContent = "Rock Paper Scissors";
+    container.removeChild(resetBtn);
+    container.removeChild(gameOver);
+}
+
+let playerPoints = 0;
+let computerPoints = 0;  
+let result;
+let container = document.querySelector('#container');
+let resultDiv = document.querySelector('#result');
+let scoreDiv = document.querySelector('#score');
+let rockBtn = document.querySelector('#rock');
+let paperBtn = document.querySelector('#paper');
+let scissorsBtn = document.querySelector('#scissors');
+let resetBtn = document.createElement('button');
+resetBtn.classList.add('reset-button');
+let gameOver = document.createElement('div');
+gameOver.textContent = "Game Over!"
 
 game();
