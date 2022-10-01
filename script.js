@@ -104,6 +104,8 @@ function reset() {
     scoreDiv.textContent = playerPoints + " (You) -  " + computerPoints;
     resultDiv.textContent = "Rock Paper Scissors";
     container.removeChild(resetBtn);
+    gameOver.classList.remove('game-over-loss');
+    gameOver.classList.remove('game-over-win');
     container.removeChild(gameOver);
 }
 
