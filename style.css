@@ -63,3 +63,33 @@ body {
     font-size: 45px;
     color: rgb(255, 82, 82);
   }
+
+  .footer {
+    position: fixed;
+    bottom: 0;
+    margin: 1vh;
+    width: 100%;
+    display: flex;
+    gap: 0.5vw;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: black;
+    bottom: 0;
+    opacity: 50%;
+
+}
+
+a {
+    display: flex;
+    align-items: center;
+    gap: 0.5vw;
+    text-decoration: none;
+    color: white;
+}
+
+#logo {
+  height: 25px;
+  background-color: white;
+  border-radius: 20px;
+}
