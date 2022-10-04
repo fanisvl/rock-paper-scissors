@@ -35,6 +35,10 @@ body {
     border: 0px;
 }
 
+.button:focus-visible {
+  outline: none;
+}
+
 .reset-button {
     border-radius: 25px;
     border: 0px;
